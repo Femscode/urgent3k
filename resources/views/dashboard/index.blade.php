@@ -166,7 +166,7 @@
                                                                     role="status">
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
-                                                                Approveal Pending
+                                                                Loan Pending
                                                             </span>
 
                                                             @elseif($loan->status == 0)
@@ -191,7 +191,7 @@
                                                             <br>
 
 
-                                                            @if($loan->status !== 3)
+                                                            @if($loan->status !== 3 || $loan->status == 2)
                                                             <a  href='/loaninfo/{{ $loan->uid }}'
                                                                 class='btn btn-secondary btn-sm'>Loan
                                                                 Info</a>

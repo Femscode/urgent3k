@@ -157,7 +157,7 @@ class HomeController extends Controller
                 $data['notification'] = $notification;
             }
             $data['loans'] = Loan::where('user_id', $user->id)->latest()->get();
-            $data['activities'] = Activity::where('user_id', $user->id)->latest()->get();
+            // $data['activities'] = Activity::where('user_id', $user->id)->latest()->get();
             $data['transactions'] = Transaction::where('user_id', $user->id)->latest()->paginate(5);
             // $data['withdrawals'] = Withdrawal::where('user_id',$user->id)->get();
             //    dd($data);
