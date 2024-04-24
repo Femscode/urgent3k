@@ -364,6 +364,8 @@ class FundingController extends Controller
             $loan->status = 2;
             $loan->totalamount -= $amountpaid;
             $loan->save();
+            $user->borrowed -= $amountpaid;
+            $user->save();
         }
 
        
