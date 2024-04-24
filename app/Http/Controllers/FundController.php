@@ -51,7 +51,7 @@ class FundController extends Controller
     {
         $data['user'] = $user = Auth::user();
         $data['active'] = 'loan';
-        if ($user->fund == 0) {
+        if ($user->fund == 0 || $user->approved == 0) {
             return redirect()->back()->with('error', 'You are currently not eligible to access any funds!');
         }
         return view('dashboard.requestfund', $data);

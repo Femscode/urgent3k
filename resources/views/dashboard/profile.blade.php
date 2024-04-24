@@ -83,7 +83,7 @@
                     <div class="col-lg-9 col-xl-6">
                         <div class='alert alert-danger'>Picture must be clear and show your face properly!</div>
                         @if($user->logo !== null)
-                        <img style='width:150px; height:100px;border-radius:10px' class="rounded-circle" src="{{ asset('brand_images/'.$user->logo.'')}}" alt="Profile Pic">
+                        <img style='width:150px; height:100px;border-radius:10px' class="rounded-circle" src="https://urgent3k.com/urgent_3k_files/public/brand_images/{{ $user->logo}}" alt="Profile Pic">
                         @endif
                         <input type='file' class='form-control' name='image' accept="image/*" />
                     </div>

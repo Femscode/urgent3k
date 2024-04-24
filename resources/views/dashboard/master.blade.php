@@ -144,7 +144,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             @if($user->logo !== null)
-            <img  class="rounded-circle" src="{{ asset('brand_images/'.$user->logo.'')}}"
+            <img  class="rounded-circle" src="https://urgent3k.com/urgent_3k_files/public/brand_images/{{ $user->logo}}"
             alt="Profile Pic">
             @else 
             <img  class="rounded-circle"  src="assets/img/profile-img.jpg"
