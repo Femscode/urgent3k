@@ -73,11 +73,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/process_order', [App\Http\Controllers\HomeController::class, 'process_order'])->name('process_order');
     Route::get('/delete_order', [App\Http\Controllers\HomeController::class, 'delete_order'])->name('delete_order');
     Route::post('/updateprofile', [App\Http\Controllers\HomeController::class, 'updateprofile'])->name('updateprofile');
-    Route::post('/kycreg', [App\Http\Controllers\HomeController::class, 'kycreg'])->name('kycreg');
+    // Route::post('/kycreg', [App\Http\Controllers\HomeController::class, 'kycreg'])->name('kycreg');
     Route::post('/setpin', [App\Http\Controllers\HomeController::class, 'setpin'])->name('setpin');
     Route::get('profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::get('myloans', [App\Http\Controllers\HomeController::class, 'myloans'])->name('myloans');
-    Route::get('kyc', [App\Http\Controllers\HomeController::class, 'kyc'])->name('kyc');
+    // Route::get('kyc', [App\Http\Controllers\HomeController::class, 'kyc'])->name('kyc');
     Route::get('user-fundwallet', [App\Http\Controllers\HomeController::class, 'fundwallet'])->name('fundwallet');
 
 

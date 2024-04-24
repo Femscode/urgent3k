@@ -2,71 +2,194 @@
 @section('content')
 
 
-<div class="flex-row-fluid ml-lg-8">
+<div class="flex-row-fluid">
     <!--begin::Card-->
     <div class="card card-custom">
         <!--begin::Header-->
         <form class="form" method='post' action='/payloan' enctype="multipart/form-data">@csrf
 
 
-            <div class="card-body m-4">
+            <div class="card-body mt-4">
                 @if($errors->any())
                 <div class="alert alert-danger">
-                  <p><strong>Opps Something went wrong</strong></p>
-                  <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                  </ul>
+                    <p><strong>Opps Something went wrong</strong></p>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
                 @endif
                 <!--begin::Heading-->
 
-                <!--begin::Form Group-->
                 <div class="form-group row mb-4">
-                    <label class="col-xl-3 col-lg-3 col-form-label"></label>
-                    <div class="col-lg-9 col-xl-6">
-                        <div style=''
-                            class="p-4 alert alert-secondary rounded bg-soft-primary font-weight-bold text-left">
-                            <b>Loan ID: </b>{{ $loan->reference }}<br>
-                            <b>Amount Borrowed: </b>₦<span id='subtotal'>{{ number_format($loan->amount) }}</span>
-                            <br><b>Interest: </b>₦<span id='charges'>{{ number_format(ceil($loan->charges)) }}</span>
-                            <br><b>Total Payable Amount: </b>₦<span id='totalamount'>{{
-                                number_format($loan->totalamount) }}</span>
-                            <input name='amount' type='hidden' id='totalamounthidden'
+                    <div class="col-lg-12 col-xl-12 col-md-12">
+                        <div class="alert alert-secondary loan-details-table">
+                            <table>
+                                <tr>
+                                    <td><b>Loan ID:</b></td>
+                                    <td>{{ $loan->reference }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Loan Amount:</b></td>
+                                    <td>₦<span id='subtotal'>{{ number_format($loan->amount) }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Interest:</b></td>
+                                    <td>₦<span id='charges'>{{ number_format(ceil($loan->charges)) }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Total Amount:</b></td>
+                                    <td>₦<span id='totalamount'>{{
+                                number_format($loan->totalamount) }}</td>
+                                    <input name='amount' type='hidden' id='totalamounthidden'
                                 value="{{ $loan->totalamount }}" />
-                            <br><br>
-                            <div class='alert alert-secondary'
-                                style='border:1px dashed #004085;background-color:#cce5ff;color:#004085'>
-                                <b>Mode Of Payment</b><br>
-                                <input required class="form-check-input" name='paymentmode' type='radio'
-                                    value='Transfer' checked>Instant Transfer
-                                <input required class="form-check-input" name='paymentmode' type='radio'
-                                    value='Card'>Credit Card
-                                <br>
-                                <b>Payment Type</b><br>
-                                <input required class="form-check-input" id='fullpayment' name='paymenttype' type='radio' value='Full'
-                                    checked>Full Payment
-                                <input required class="form-check-input" id='partpayment' name='paymenttype'
-                                    type='radio' value='Part'>Part Payment
-                                    <input type='hidden' value='{{ $loan->uid }}' name='loanId'/>
-                                <div id='showpaymentform' style='display:none'>
+                                </tr>
+                            </table>
 
-                                    <input type='number' id='partpaymentamount' class='form-control'
-                                        name='partpaymentamount' max="{{ $loan->totalamount}}" placeholder="Enter part payment amount" />
+                            <hr>
+
+                            <div class="payment-section">
+                                <div class="mode-of-payment">
+                                    <b>Mode Of Payment:</b><br>
+                                    <label class="custom-radio">
+                                        <input required class="form-check-input" name='paymentmode' type='radio'
+                                            value='Transfer' checked>Instant Transfer
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="custom-radio">
+                                        <input required class="form-check-input" name='paymentmode' type='radio'
+                                            value='Card'>Credit Card
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
 
-                                <div class=" align-item-center col-12">
-                                    <button type="submit" style='background:#004085'
-                                        class="p-2 mt-2 btn btn-primary font-weight-bold btn-sm">Proceed To Make
-                                        Payment</button>
+                                <div class="payment-type">
+                                    <b>Payment Type:</b><br>
+                                    <label class="custom-radio">
+                                        <input required class="form-check-input" id='fullpayment' name='paymenttype'
+                                            type='radio' value='Full' checked>Full Payment
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="custom-radio">
+                                        <input required class="form-check-input" id='partpayment' name='paymenttype'
+                                            type='radio' value='Part'>Part Payment
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <input type='hidden' value='{{ $loan->uid }}' name='loanId' />
+                                    <div id='showpaymentform' style='display:none'>
+                                        <input type='number' id='partpaymentamount' class='form-control'
+                                            name='partpaymentamount' max="{{ $loan->totalamount}}"
+                                            placeholder="Enter part payment amount" />
+                                    </div>
                                 </div>
+                            </div>
 
+                            <div class="action-buttons">
+                                <button type="submit" class="btn btn-primary font-weight-bold btn-sm">Proceed To Make
+                                    Payment</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
+
+                <style>
+                    .loan-details-table table {
+                        width: 100%;
+                    }
+
+                    .loan-details-table table td {
+                        padding: 5px;
+                    }
+
+                    .action-buttons {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 10px;
+                    }
+
+                    .action-buttons button {
+                        background: #004085;
+                        color: #fff;
+                        padding: 8px 16px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    }
+
+                    .action-buttons button:hover {
+                        background: #003162;
+                    }
+
+                    .payment-section {
+                        margin-bottom: 20px;
+                    }
+
+                    .mode-of-payment,
+                    .payment-type {
+                        margin-bottom: 10px;
+                    }
+
+                    .custom-radio {
+                        position: relative;
+                        padding-left: 30px;
+                        cursor: pointer;
+                        display: block;
+                    }
+
+                    .custom-radio input {
+                        position: absolute;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+
+                    .checkmark {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 20px;
+                        width: 20px;
+                        background-color: #eee;
+                        border-radius: 50%;
+                    }
+
+                    .custom-radio input:checked~.checkmark:after {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        top: 5px;
+                        left: 5px;
+                        width: 10px;
+                        height: 10px;
+                        background-color: #004085;
+                        border-radius: 50%;
+                    }
+
+                    .custom-radio:hover input~.checkmark {
+                        background-color: #ccc;
+                    }
+
+                    .custom-radio:hover input:checked~.checkmark:after {
+                        background-color: #004085;
+                    }
+
+                    .custom-radio .checkmark:after {
+                        display: none;
+                        content: '';
+                    }
+
+                    .custom-radio input:checked~.checkmark {
+                        background-color: #004085;
+                    }
+
+                    .custom-radio:hover input~.checkmark:after {
+                        background-color: #004085;
+                    }
+
+                    .custom-radio input:checked~.checkmark:after {
+                        display: block;
+                    }
+                </style>
 
 
             </div>

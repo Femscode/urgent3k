@@ -204,7 +204,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundswithdraw', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Loan Request!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
         } 
         elseif($title == 'Loan Approved') {
@@ -212,7 +212,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundsapproved', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Fund Approved!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
 
         }
@@ -221,7 +221,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundsdeclined', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Fund Declined!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
 
         }
@@ -229,7 +229,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundspaid', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Fund Paid!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
         }
         elseif($title == 'Waybill Cancellation Approved') {
@@ -312,7 +312,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundswithdraw', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Loan Request!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
         } 
         elseif($title == 'Loan Approved') {
@@ -320,7 +320,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundsapproved', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Fund Approved!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
 
         }
@@ -329,7 +329,7 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundsdeclined', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Fund Declined!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
 
         }
@@ -337,12 +337,24 @@ trait TransactionTrait
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
             Mail::send('mail.fundspaid', $data, function ($message) use ($email) {
                 $message->to($email)->subject('Fund Paid!');
-                $message->from('info@urgent3k.com', 'URGENT3K');
+                $message->from('support@urgent3k.com', 'URGENT3K');
             });
         
         
         
-        } elseif ($title == 'Loan Request') {
+        }
+        elseif($title == 'Partial Loan Payment') {
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'tranx' => $tranx);
+            Mail::send('mail.fundpartialpaid', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Partial Loan Payment!');
+                $message->from('support@urgent3k.com', 'URGENT3K');
+            });
+        
+        
+        
+        }
+        
+        elseif ($title == 'Loan Request') {
          
                 $tranx->status = $status;
                 $tranx->save();

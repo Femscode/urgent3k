@@ -10,10 +10,10 @@
   <title>URGENT3K | HOME</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="URGENT3K - Secure Your Online Transaction">
+  <meta name="description" content="URGENT3K - Get fast loan of ₦3,000 instantly!">
   <meta name="keywords"
-    content="Secure your online transactions">
-  <meta name="author" content="Createx Studio">
+    content="Get fast loan of The naira ₦3,000 instantly">
+  <meta name="author" content="URGENT3K">
 
   <!-- Viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,14 +22,14 @@
   <script src="assets/js/theme-switcher.js"></script>
 
   <!-- Favicon and Touch Icons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  {{-- <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"> --}}
   <link rel="manifest" href="assets/favicon/site.webmanifest">
-  <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-  <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+  {{-- <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1"> --}}
+  {{-- <link rel="shortcut icon" href="assets/favicon/favicon.ico"> --}}
   <meta name="msapplication-TileColor" content="#080032">
-  <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+  {{-- <meta name="msapplication-config" content="assets/favicon/browserconfig.xml"> --}}
   <meta name="theme-color" content="#ffffff">
 
   <!-- Vendor Styles -->
@@ -166,7 +166,7 @@
   <!-- Page loading spinner -->
   <div class="page-loading active">
     <div class="page-loading-inner">
-      <div class="page-spinner"></div><span>Loading...</span>
+      <div class="page-spinner"></div><span style='color:black'><b>URGENT3<span style='color:red'>K...</b></span></span>
     </div>
   </div>
 
@@ -269,7 +269,7 @@
                   class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">Click To Borrow</a>
                 {{-- <p class="d-lg-block d-none mb-0 ps-md-3">urgent3k is a leading full-service digital platform, that
                   help you secure an online transaction, either as a seller or a buyer.</p> --}}
-                <p class="d-lg-block d-none mb-0 ps-md-3">We would lend you an urgent 3k, and you will pay us back in five(5) days time. With an interest of NGN100</p>
+                <p class="d-lg-block d-none mb-0 ps-md-3">We would lend you an urgent 3k, and you will pay us back in five(5) days time. With an interest of NGN200</p>
               </div>
             </div>
 
@@ -333,7 +333,7 @@
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.5"
               data-disable-parallax-down="lg" style="transform: translate3d(4px, 8px, 0px);">
               <h3 class="h4">Set Up Your KYC.</h3>
-              <p class="mb-0">We will like to know you more, and your credit history. (Takes abount 2Min)</p>
+              <p class="mb-0">We will like to know you more, and your credit history. (Takes about 2Min)</p>
             </div>
           </div>
         </div>
@@ -389,7 +389,7 @@
                     </div>
                     <div class="ps-4 ms-lg-3">
                       <h3 class="display-10 mb-1">Fast & Reliable</h3>
-                      <p class="mb-0">Get a loan within three(3) Minuetes, no time for unneccessary questions.</p>
+                      <p class="mb-0">Get a loan within three(3) Minutes!</p>
                     </div>
                   </div>
                 </div>
@@ -404,7 +404,7 @@
                     </div>
                     <div class="ps-4 ms-lg-3">
                       <h3 class="display-10 mb-1">Low Interest</h3>
-                      <p class="mb-0">Our interest is just NGN240 for every 3k borrowed</p>
+                      <p class="mb-0">Our interest is just NGN200 for every 3k borrowed</p>
                     </div>
                   </div>
                 </div>
@@ -449,8 +449,8 @@
     <section class="container pb-5 mb-2 mb-md-4 mb-lg-5 mt-n3 mt-lg-0">
       <div class="row pt-xl-2 pb-md-3">
         <div class="col-lg-5 mb-4 mb-lg-0">
-          <h2 class="h2 text-center text-sm-start mb-4">Financial emergency situations are inevitably, that's why we are here to help you out!</h2>
-          <p class="pb-2 pb-lg-4 pb-xl-5 mb-3">We understand that some situations needs urgency.</p>
+          <h2 class="h2 text-center text-sm-start mb-4">Financial emergency situations are inevitable, that's why we are here to help you out!</h2>
+          {{-- <p class="pb-2 pb-lg-4 pb-xl-5 mb-3">We understand that some situations needs urgency.</p> --}}
          
         </div>
         <div class="col-xl-6 col-lg-7 offset-xl-1 position-relative">
@@ -683,44 +683,47 @@
           <!-- Item -->
           <div class="swiper-slide py-3 swiper-slide-active" role="group" aria-label="1 / 6" style="width: 176px;">
             <a href="#" class="card card-body card-hover px-2 mx-2">
-              <img src="assets/img/brands/01.svg" class="d-block mx-auto my-2" width="154" alt="Brand">
+              <img src="assets/img/cttaste_logo.png" class="d-block mx-auto my-2" width="154" alt="Brand">
+            </a>
+          </div>
+
+          <div class="swiper-slide py-3" role="group" aria-label="3 / 6" style="width: 176px;">
+            <a href="#" class="card card-body card-hover px-2 mx-2">
+              <img src="assets/img/cthostel_logo.png" class="d-block mx-auto my-2" width="154" alt="Brand">
             </a>
           </div>
 
           <!-- Item -->
           <div class="swiper-slide py-3 swiper-slide-next" role="group" aria-label="2 / 6" style="width: 176px;">
             <a href="#" class="card card-body card-hover px-2 mx-2">
-              <img src="assets/img/brands/02.svg" class="d-block mx-auto my-2" width="154" alt="Brand">
+              <img src="assets/img/oldvtulogo.png" class="d-block mx-auto my-2" width="154" alt="Brand">
             </a>
           </div>
 
           <!-- Item -->
+        
+
+          <!-- Item -->
+     
+
+          <div class="swiper-slide py-3 swiper-slide-active" role="group" aria-label="1 / 6" style="width: 176px;">
+            <a href="#" class="card card-body card-hover px-2 mx-2">
+              <img src="assets/img/cttaste_logo.png" class="d-block mx-auto my-2" width="154" alt="Brand">
+            </a>
+          </div>
+
           <div class="swiper-slide py-3" role="group" aria-label="3 / 6" style="width: 176px;">
             <a href="#" class="card card-body card-hover px-2 mx-2">
-              <img src="assets/img/brands/03.svg" class="d-block mx-auto my-2" width="154" alt="Brand">
+              <img src="assets/img/cthostel_logo.png" class="d-block mx-auto my-2" width="154" alt="Brand">
             </a>
           </div>
-
-          <!-- Item -->
-          <div class="swiper-slide py-3" role="group" aria-label="4 / 6" style="width: 176px;">
+          <div class="swiper-slide py-3 swiper-slide-next" role="group" aria-label="2 / 6" style="width: 176px;">
             <a href="#" class="card card-body card-hover px-2 mx-2">
-              <img src="assets/img/brands/04.svg" class="d-block mx-auto my-2" width="154" alt="Brand">
+              <img src="assets/img/oldvtulogo.png" class="d-block mx-auto my-2" width="154" alt="Brand">
             </a>
           </div>
-
           <!-- Item -->
-          <div class="swiper-slide py-3" role="group" aria-label="5 / 6" style="width: 176px;">
-            <a href="#" class="card card-body card-hover px-2 mx-2">
-              <img src="assets/img/brands/05.svg" class="d-block mx-auto my-2" width="154" alt="Brand">
-            </a>
-          </div>
-
-          <!-- Item -->
-          <div class="swiper-slide py-3" role="group" aria-label="6 / 6" style="width: 176px;">
-            <a href="#" class="card card-body card-hover px-2 mx-2">
-              <img src="assets/img/brands/06.svg" class="d-block mx-auto my-2" width="154" alt="Brand">
-            </a>
-          </div>
+        
         </div>
 
         <!-- Pagination (bullets) -->
@@ -750,7 +753,7 @@
             style="background-image: url(assets/img/landing/digital-agency/contact-bg.png);">
             <div class="py-md-5 py-4 text-center">
               <h3 class="h4 fw-normal text-light opacity-75">Want to know more? Let's talk!</h3>
-              <a href="mailto:email@example.com" class="display-6 text-light">info@urgent3k.com</a>
+              <a href="mailto:support@urgent3k.com" class="display-6 text-light">support@urgent3k.com</a>
               <div class="pt-md-5 pt-4 pb-md-2">
                 <a href="contacts-v1.html" class="btn btn-lg btn-light">Contact us</a>
               </div>
@@ -769,9 +772,9 @@
         <div class="col-lg-4 col-md-6">
           <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4">
             {{-- <img src="assets/img/logo.svg" width="47" alt="URGENT3K"> --}}
-            URGENT3K
+            URGENT3<span style='color:red'>K</span>
           </div>
-          <p class="fs-sm pb-lg-3 mb-4">urgent3k protects your online transaction from fraudulent activities.</p>
+          <p class="fs-sm pb-lg-3 mb-4">A state of financial emergency? That's where we come in!</p>
           <form class="needs-validation" novalidate>
             <label for="subscr-email" class="form-label">Subscribe to our newsletter</label>
             <div class="input-group">
@@ -824,7 +827,7 @@
             </div>
             <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
               <h6 class="mb-2">Contact Us</h6>
-              <a href="mailto:email@example.com" class="fw-medium">support@urgent3k.com</a>
+              <a href="mailto:support@urgent3k.com" class="fw-medium">support@urgent3k.com</a>
             </div>
           </div>
         </div>

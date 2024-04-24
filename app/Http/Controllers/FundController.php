@@ -106,7 +106,6 @@ class FundController extends Controller
             'uid' => Str::uuid(),
             'reference' => "SWBP" . Str::random(5),
             'user_id' => $user->id,
-
             'client_id' => $client->id,
             'product_name' => $request->product_name,
             'charges' => $request->charges,
@@ -193,7 +192,7 @@ class FundController extends Controller
             $env = env('FLW_PUBLIC_KEY');
 
             $data['public_key'] = $env;
-            $data['callback_url'] = 'https://urgent3k.com/payment/callback';
+            $data['callback_url'] = 'https://urgent3k.com/dashboard';
 
 
             return view('dashboard.pay_with_card', $data);

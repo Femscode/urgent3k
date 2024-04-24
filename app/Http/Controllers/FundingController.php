@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Paystack;
 use Carbon\Carbon;
+use App\Models\Loan;
 use App\Models\User;
 use App\Models\Waybill;
 use App\Models\Transaction;
@@ -36,7 +37,8 @@ class FundingController extends Controller
         }
     }
 
-    public function generatePermanentAccount(Request $request) {
+    public function generatePermanentAccount(Request $request)
+    {
         // dd($request->all(),env('FLW_SECRET_KEY'));
         $user = Auth::user();
         $str_name = explode(" ", $user->name);
@@ -55,7 +57,7 @@ class FundingController extends Controller
                 'is_permanent' => true,
                 'bvn' => $request->bvn,
                 'tx_ref' => $trx_ref,
-                'phonenumber' => $user->phone,               
+                'phonenumber' => $user->phone,
                 'firstname' => $first_name,
                 'lastname' => $last_name,
                 'narration' => 'VTUBIZ/' . $first_name . '-' . $last_name,
@@ -67,16 +69,17 @@ class FundingController extends Controller
 
         // You can also convert the JSON response to an array or object if needed:
         $responseData = $response->json(); // Converts JSON response to an array
-        
-      
+
+
         $user->bank_name = $responseData['data']['bank_name'];
         $user->account_no = $responseData['data']['account_number'];
-        $user->account_name = 'VTUBIZ/' . $first_name . '-' . $last_name ;
+        $user->account_name = 'VTUBIZ/' . $first_name . '-' . $last_name;
         $user->save();
-        return redirect('/fundwallet')->with('message','Permanent Account Created Successfully!');
+        return redirect('/fundwallet')->with('message', 'Permanent Account Created Successfully!');
     }
     public function checkout(Request $request, $subdomain = null)
     {
+
         $this->validate($request, [
             'type' => 'required',
             'amount' => 'required',
@@ -324,36 +327,51 @@ class FundingController extends Controller
         file_put_contents(__DIR__ . '/flwlog.txt', json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
 
         $email = $request->input('data.customer.email');
-        $r_amountpaid = intval($request->input('data.amount'));
-
-        $amountpaid = $r_amountpaid;
-        if ($amountpaid <= 1000) {
-            $charges = 10;
-            $amountpaid -= $charges;
-        } elseif ($amountpaid < 3000) {
-            $charges = 30;
-            $amountpaid -= $charges;
-        // } elseif ($amountpaid < 5000) {
-        //     $charges = 50;
-        //     $amountpaid -= $charges;
-        } else {
-            $charges = 50;
-            $amountpaid -= $charges;
-        }
-        $details_paid = $amountpaid + $charges;
+        $amountpaid = intval($request->input('data.amount'));
 
         $user = User::where('email', $email)->firstOrFail();
-        $waybillId = $request->input('data.tx_ref');
-        $waybill = Waybill::where('uid',$waybillId)->firstOrFail();
-        $details = "Waybill " . $waybill->product_name . " ( ". $waybill->reference." ) paid for | Charges (NGN" . $charges . ")";
-        $this->create_activity($waybill->uid, $user->id,'Waybill Payment', $details,2);
-        // file_put_contents(__DIR__ . '/gethere.txt', json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
-        $this->create_transaction('Waybill Payment', $request->input('data.id'), $details, 'credit', $amountpaid, $user->id, 1, $waybillId);
+        $loan = Loan::where('user_id', $user->id)->first();
+
+        //when loan is fully paid
+        if ($amountpaid == $loan->totalamount) {
+            $details = "Loan (" . $loan->reference . ") Paid. Amount : ₦" . $amountpaid;
+            $this->create_transaction('Loan Paid', $loan->reference, $details, 'none', $amountpaid, $loan->user_id,  3);
+            $user->point += 1.5;
+            $user->borrowed = 0;
+            $user->fund = $loan->totalamount;
+            $user->save();
+            $loan->status = 3;
+            $loan->save();
+        }
+        //when amount paid is greater than loan
+        elseif ($amountpaid > $loan->totalamount) {
+            $overpay = floor($amountpaid - $loan->totalamount);
+            $details = "Loan (" . $loan->reference . ") Paid. Amount : ₦" . $amountpaid;
+            $this->create_transaction('Loan Paid', $loan->reference, $details, 'none', $amountpaid, $loan->user_id,  3);
+            $user->point += 1.5;
+            $user->borrowed = 0;
+            $user->fund = $loan->totalamount;
+            $user->balance += $overpay;
+            $user->save();
+            $loan->status = 3;
+            $loan->save();
+
+        }
+        //partial payment of loan
+        else {
+            $details = "Partial payment of Loan (" . $loan->reference . "). Amount : ₦" . $amountpaid;
+            $this->create_transaction('Partial Loan Payment', $loan->reference, $details, 'none', $amountpaid, $loan->user_id,  3);
+            $loan->status = 2;
+            $loan->totalamount -= $amountpaid;
+            $loan->save();
+        }
+
        
+
         return response()->json("OK", 200);
     }
 
-    
+
     public static function computeSHA512TransactionHash($stringifiedData, $clientSecret)
     {
         $computedHash = hash_hmac('sha512', $stringifiedData, $clientSecret);

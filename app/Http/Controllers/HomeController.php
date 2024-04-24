@@ -502,6 +502,9 @@ class HomeController extends Controller
 
         $user->name = $request->name;
         $user->phone = $request->phone;
+        $user->facebook = $request->facebook;
+        $user->twitter = $request->twitter;
+        $user->instagram = $request->instagram;
         if ($request->bvn !== null) {
             $user->bvn = $request->bvn;
             $user->bank_name = $request->bank_name;

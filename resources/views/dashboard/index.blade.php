@@ -12,7 +12,7 @@
             @if($user->approved == 0)
             <div class='alert alert-danger'>
                 <h4><strong>Let's Know You!<br> Setup your KYC in 1Min.</strong></h4>
-                <p>Click <a href='/kyc'>here</a> to complete your profile to access your <b>URGENT3K</b>.</p>
+                <p>Click <a href='/profile'>here</a> to complete your profile to access your <b>URGENT3K</b>.</p>
             </div>
             @endif
             <div class="row">
