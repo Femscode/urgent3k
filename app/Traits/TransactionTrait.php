@@ -305,7 +305,7 @@ trait TransactionTrait
         $email = $user->email;
         $ref = $tranx->ref;
 
-        return true;
+        // return true;
        
         if($title == 'Loan Request') {
             //send mail to waybill payment
