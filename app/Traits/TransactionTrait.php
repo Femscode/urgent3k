@@ -303,7 +303,7 @@ trait TransactionTrait
         $user = User::find($user);
         $name = $user->name;
         $email = $user->email;
-        $ref = $tranx->ref;
+        $ref = $tranx->reference;
 
         // return true;
        
